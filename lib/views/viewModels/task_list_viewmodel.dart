@@ -15,14 +15,19 @@ class TaskListViewModel extends ChangeNotifier {
     updateTaskList(usecase.showAll());
   }
 
-  void check(int idx) {
-     taskList[idx] = taskList[idx].updateIsCompleted(isCompleted: true);
-     updateTask(taskList[idx]);
+  void check(Task task) {
+    final idx = taskList.indexOf(task);
+    final updatedTask = task.updateIsCompleted(isCompleted: true);
+
+     taskList[idx] = updatedTask;
+     updateTask(updatedTask);
   }
 
-  void unCheck(int idx) {
-    taskList[idx] = taskList[idx].updateIsCompleted(isCompleted: false);
-    updateTask(taskList[idx]);
+  void unCheck(Task task) {
+    final idx = taskList.indexOf(task);
+    final updatedTask = task.updateIsCompleted(isCompleted: false);
+    taskList[idx] = updatedTask;
+    updateTask(updatedTask);
   }
 
   void updateTask(Task updatedTask) {

@@ -48,8 +48,8 @@ class TaskListScreen extends StatelessWidget {
                       return TaskListItemWidget(
                         task,
                         callback: (isCheck) => isCheck
-                            ? viewModel.check(idx)
-                            : viewModel.unCheck(idx),
+                            ? viewModel.check(task)
+                            : viewModel.unCheck(task),
                         onTap: () => Navigator.of(context)
                             .push<void>(CupertinoPageRoute(
                               builder: (_) => ShowTaskScreen(task),
