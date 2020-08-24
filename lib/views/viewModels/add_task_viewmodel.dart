@@ -23,17 +23,17 @@ class AddTaskViewModel extends ChangeNotifier {
     final result = usecase.addTask(params);
     print(result);
     if(result!=null){
-      updateToBeSuccessfullyDone();
+      _updateToBeSuccessfullyDone();
     }else {
-      updateToBeFailed();
+      _updateToBeFailed();
     }
   }
 
-  void updateToBeSuccessfullyDone(){
+  void _updateToBeSuccessfullyDone(){
     state = AddTaskViewState.success;
     notifyListeners();
   }
-  void updateToBeFailed(){
+  void _updateToBeFailed(){
     state = AddTaskViewState.failure;
     notifyListeners();
   }

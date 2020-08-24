@@ -4,7 +4,7 @@ import 'package:todo/domain/task/usecase/interface/task_usecase.dart';
 
 class TaskListViewModel extends ChangeNotifier {
   TaskListViewModel(this.usecase) {
-    updateTaskList(usecase.showAll());
+    _updateTaskList(usecase.showAll());
   }
 
   final TaskUsecase usecase;
@@ -12,7 +12,7 @@ class TaskListViewModel extends ChangeNotifier {
   List<Task> taskList;
 
   void reload() {
-    updateTaskList(usecase.showAll());
+    _updateTaskList(usecase.showAll());
   }
 
   void check(Task task) {
@@ -20,22 +20,22 @@ class TaskListViewModel extends ChangeNotifier {
     final updatedTask = task.updateIsCompleted(isCompleted: true);
 
      taskList[idx] = updatedTask;
-     updateTask(updatedTask);
+     _updateTask(updatedTask);
   }
 
   void unCheck(Task task) {
     final idx = taskList.indexOf(task);
     final updatedTask = task.updateIsCompleted(isCompleted: false);
     taskList[idx] = updatedTask;
-    updateTask(updatedTask);
+    _updateTask(updatedTask);
   }
 
-  void updateTask(Task updatedTask) {
+  void _updateTask(Task updatedTask) {
     usecase.updateTask(updatedTask.identifier,updatedTask);
     notifyListeners();
   }
 
-  void updateTaskList(List<Task> tasks) {
+  void _updateTaskList(List<Task> tasks) {
     taskList = tasks;
     notifyListeners();
   }
