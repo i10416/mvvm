@@ -44,7 +44,7 @@ class TaskListScreen extends StatelessWidget {
                   child: ListView.builder(
                     shrinkWrap: true,
                     itemBuilder: (_, idx) {
-                      final task = viewModel.taskList[idx];
+                      final task = viewModel.taskList.elementAt(idx);
                       return TaskListItemWidget(
                         task,
                         callback: (isCheck) => isCheck

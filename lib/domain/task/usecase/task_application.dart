@@ -16,13 +16,15 @@ class TaskApplication extends TaskUsecase {
 
 
   @override
-  List<Task> showAll() {
+  Set<Task> showAll() {
     return taskRepo.getAll();
   }
 
   @override
-  void updateTask(int identifier,Task task) {
-    taskRepo.updateTask(identifier,task);
+  void updateTask(Task targetTask,Task updatedTask) {
+    // updatedTask => updateTaskParams;
+    // updatedTask = task.update(params);
+    taskRepo.updateTask(targetTask,updatedTask);
   }
 
 }

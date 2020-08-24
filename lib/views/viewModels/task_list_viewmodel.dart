@@ -9,33 +9,30 @@ class TaskListViewModel extends ChangeNotifier {
 
   final TaskUsecase usecase;
 
-  List<Task> taskList;
+  Set<Task> taskList;
 
   void reload() {
     _updateTaskList(usecase.showAll());
   }
 
   void check(Task task) {
-    final idx = taskList.indexOf(task);
     final updatedTask = task.updateIsCompleted(isCompleted: true);
-
-     taskList[idx] = updatedTask;
-     _updateTask(updatedTask);
+    _updateTask(task,updatedTask);
   }
 
   void unCheck(Task task) {
-    final idx = taskList.indexOf(task);
     final updatedTask = task.updateIsCompleted(isCompleted: false);
-    taskList[idx] = updatedTask;
-    _updateTask(updatedTask);
+    _updateTask(task,updatedTask);
   }
 
-  void _updateTask(Task updatedTask) {
-    usecase.updateTask(updatedTask.identifier,updatedTask);
+  void _updateTask(Task task,Task updatedTask) {
+    print('task ${task.toString()}');
+    taskList = taskList.map((e) => e == task ? updatedTask : e).toSet();
+    usecase.updateTask(task,updatedTask);
     notifyListeners();
   }
 
-  void _updateTaskList(List<Task> tasks) {
+  void _updateTaskList(Set<Task> tasks) {
     taskList = tasks;
     notifyListeners();
   }

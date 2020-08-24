@@ -14,24 +14,23 @@ class InternalTaskRepository extends TaskRepository {
 
 
 
-  List<Task> taskList = [];
+  Set<Task> taskList = {};
 
   @override
-  List<Task> getAll() {
+  Set<Task> getAll() {
     return taskList;
   }
 
   @override
-  void updateTask(int identifier, Task task) {
-    taskList[identifier] = task;
+  void updateTask(Task task,Task updated) {
+    taskList = taskList.map((e) => e == task ? updated : e).toSet();
     print('update task ${task.toString()}');
   }
 
   @override
   Task create(CreateTaskParams params) {
-    final identifier = taskList.length;
     final task =
-        Task(identifier, params.title, description: params.description);
+        Task(params.title, description: params.description);
     taskList.add(task);
     return task;
   }

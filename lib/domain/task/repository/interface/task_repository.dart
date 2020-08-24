@@ -1,8 +1,8 @@
 import 'package:todo/domain/task/model/task.dart';
 
 abstract class TaskRepository {
-  List<Task> getAll();
-  void updateTask(int identifier,Task task);
+  Set<Task> getAll();
+  void updateTask(Task task,Task updatedTask);
   Task create(CreateTaskParams params);
 }
 
