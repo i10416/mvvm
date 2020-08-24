@@ -5,4 +5,6 @@ abstract class TaskUsecase {
   Task addTask(CreateTaskParams params);
   void updateTask(Task targetTask,Task updatedTask);
   Set<Task> showAll();
+  Task checkTask(Task task);
+  Task uncheckTask(Task task);
 }

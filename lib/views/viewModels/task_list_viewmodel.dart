@@ -16,19 +16,17 @@ class TaskListViewModel extends ChangeNotifier {
   }
 
   void check(Task task) {
-    final updatedTask = task.updateIsCompleted(isCompleted: true);
+    final updatedTask = usecase.checkTask(task);
     _updateTask(task,updatedTask);
   }
 
   void unCheck(Task task) {
-    final updatedTask = task.updateIsCompleted(isCompleted: false);
+    final updatedTask = usecase.uncheckTask(task);
     _updateTask(task,updatedTask);
   }
 
   void _updateTask(Task task,Task updatedTask) {
-    print('task ${task.toString()}');
     taskList = taskList.map((e) => e == task ? updatedTask : e).toSet();
-    usecase.updateTask(task,updatedTask);
     notifyListeners();
   }
 
