@@ -27,18 +27,12 @@ class TaskApplication extends TaskUsecase {
     taskRepo.updateTask(task, updatedTask);
     return updatedTask;
   }
+  @override
   Task uncheckTask(Task task){
     final params = task.buildUpdateParams(isCompleted: false);
     final updatedTask = task.update(params);
     taskRepo.updateTask(task, updatedTask);
     return updatedTask;
-  }
-
-  @override
-  void updateTask(Task targetTask,Task updatedTask) {
-    // updatedTask => updateTaskParams;
-    // updatedTask = task.update(params);
-    taskRepo.updateTask(targetTask,updatedTask);
   }
 
 }
