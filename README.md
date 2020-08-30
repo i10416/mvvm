@@ -2,6 +2,14 @@
 
 A new Flutter Task management application using Change Notifier and Provider.
 
+## about
+
+- タスクとグループが存在する
+- タスクはグループに所属する
+
+- タスクは複数のグループに所属することができる
+
+
 ## architecture
 
 - domains層
