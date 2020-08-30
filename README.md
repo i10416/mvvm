@@ -14,7 +14,7 @@ A new Flutter Task management application using Change Notifier and Provider.
 
 - domains層
   - usecase
-    - アプリケーションのロジック
+    - アプリケーションのロジック. ここでdomain modelを協調させる
       - TODO: readとwriteを分ける
         - Maybe: readはusecaseではなくqueryに分けたほうがいいかもしれない
   - protocol
