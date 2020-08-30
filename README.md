@@ -8,6 +8,15 @@ A new Flutter Task management application using Change Notifier and Provider.
   - usecase
     - アプリケーションのロジック
       - TODO: readとwriteを分ける
+        - Maybe: readはusecaseではなくqueryに分けたほうがいいかもしれない
+  - protocol
+    - usecaseとviewModelでやり取りするためのprotocolを定義する
+      - 例: タスクを新規作成する場合
+        - createTaskRequest
+        - createTaskResponse
+          - createTaskResponse.success
+          - createTaskResponse.failure
+      - ドメイン層でのエラーはcreateTaskResponse.failureに変換してviewModelに渡す
   - repository
     - データの永続化
       - TODO: 受け渡しの型をFutureにラップする
