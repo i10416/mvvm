@@ -38,5 +38,6 @@ A new Flutter Task management application using Change Notifier and Provider.
     - viewの状態管理を行う
     - usecaseのインターフェースを介してドメイン層への入力を行ったりドメイン層からの出力を受け取ったりする
       - その際に、入力をusecaseで扱うために変換したり、usecaseから受け取った値をviewで扱うために変換する
+    - 画面の状態管理以外のロジックを持ちすぎない
   - view
     - 画面の表示・レイアウト
